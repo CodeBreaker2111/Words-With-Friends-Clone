@@ -13,3 +13,5 @@ func _on_button_down():
 	else:
 		get_parent().get_node("Label").text = "Invalid"
 		get_parent().get_node("Label").modulate = Color(1, 0, 0)
+	
+	self.release_focus()

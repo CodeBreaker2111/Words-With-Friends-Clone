@@ -14,3 +14,5 @@ func _on_button_down():
 		open = true
 		$background.show()
 		$close.show()
+	
+	self.release_focus()

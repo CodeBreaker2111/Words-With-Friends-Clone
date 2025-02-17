@@ -180,7 +180,6 @@ texture = ExtResource("1_plvn1")
 [node name="Background" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
 position = Vector2(0, 20)
 scale = Vector2(0.596, 0.596)
-z_index = 1
 texture = ExtResource("1_eufop")
 script = ExtResource("5_uv61t")
 

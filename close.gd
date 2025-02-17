@@ -13,3 +13,4 @@ func _process(delta):
 func _on_button_down(): # close everything
 	get_parent()._on_button_down() # close dictionary
 	get_parent().get_parent()._on_button_down() # close more menu
+	self.release_focus()

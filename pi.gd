@@ -7,3 +7,4 @@ func _ready():
 
 func _on_button_down():
 	get_parent().get_node("TextEdit").text += "π"
+	self.release_focus()

@@ -22,6 +22,8 @@ func _on_button_down():
 func _on_button_up():
 	dragging = false
 	snap_tile_to_grid()
+	
+	self.release_focus()
 
 func _process(delta):
 	if dragging:
@@ -29,11 +31,15 @@ func _process(delta):
 	
 	if on_board:
 		position = grid_to_pos()
+		if Board.scale < Vector2(1, 1):
+			scale = Vector2(1, 1)
+		else:
+			scale = Vector2(2, 2)
 
 func get_global_mouse_pos():
 	return get_global_mouse_position()
 
-func snap_tile_to_grid():
+func snap_tile_to_grid(): # uses mouse position
 	if Board.scale < Vector2(1, 1):
 		scale = Vector2(1, 1)
 		position = Board.get_closest_grid_pos(get_global_mouse_pos()) - Vector2(Board.tile_offset_x / 2, Board.tile_offset_y / 2)

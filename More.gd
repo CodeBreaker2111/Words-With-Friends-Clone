@@ -18,3 +18,5 @@ func _on_button_down():
 		$Less.show()
 		$Dictionary.show()
 		$Dots.rotation = 1.5708
+	
+	self.release_focus()
