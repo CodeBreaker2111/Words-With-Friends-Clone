@@ -20,24 +20,33 @@ func _ready():
 
 func _on_button_down():
 	if Input.is_action_pressed("shift"):
+		Board.tiles_in_use.erase(board_pos)
 		on_board = false
 		board_pos = Vector2(-1, -1)
 		position = starting_pos
 		scale = Vector2(2, 2)
+		in_sound.play()
 	else:
 		out_sound.play()
 		offset = global_position - get_global_mouse_position()
 		dragging = true
 		on_board = false
 	
+	Board.tiles_in_use.erase(board_pos)
 	self.release_focus()
 
 func _on_button_up():
 	if !Input.is_action_pressed("shift"):
 		dragging = false
-		snap_tile_to_grid()
+		board_pos = Board.get_closest_grid_point(get_global_mouse_pos())
+		
+		in_sound.play()
+		if board_pos not in Board.tiles_in_use:
+			snap_tile_to_grid()
+			Board.tiles_in_use.append(board_pos)
+		else:
+			board_pos = Vector2(-1, -1)
 	
-	in_sound.play()
 	self.release_focus()
 
 func _process(delta):
