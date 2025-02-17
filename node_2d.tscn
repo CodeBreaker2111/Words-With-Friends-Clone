@@ -1,0 +1,470 @@
+[gd_scene load_steps=25 format=3 uid="uid://bwyv8crwegjg7"]
+
+[ext_resource type="Texture2D" uid="uid://d3y42nbbsy6ap" path="res://Assets/IMG_0080.jpg" id="1_eufop"]
+[ext_resource type="Texture2D" uid="uid://b6yahn0eivcew" path="res://Assets/blue_bar.png" id="1_g4sw0"]
+[ext_resource type="Texture2D" uid="uid://j2tl6s56i62c" path="res://Assets/blue.png" id="1_koplp"]
+[ext_resource type="Script" path="res://More.gd" id="1_nplkh"]
+[ext_resource type="Texture2D" uid="uid://83epx1no48eb" path="res://Assets/bg_white.png" id="1_plvn1"]
+[ext_resource type="Texture2D" uid="uid://vpmnvhjrkosr" path="res://Assets/dots.png" id="1_w8b86"]
+[ext_resource type="Script" path="res://Button.gd" id="2_wq322"]
+[ext_resource type="Texture2D" uid="uid://03lmuc48upty" path="res://Assets/Tiles/blank_tile.png" id="3_12spa"]
+[ext_resource type="Texture2D" uid="uid://bilyej65iv8my" path="res://Assets/more.png" id="3_f7mud"]
+[ext_resource type="Texture2D" uid="uid://djqmff5lqn0gg" path="res://Assets/less.png" id="4_a438f"]
+[ext_resource type="Script" path="res://TileControl.gd" id="5_er4gm"]
+[ext_resource type="Script" path="res://Dictionary_button.gd" id="5_gks6f"]
+[ext_resource type="Script" path="res://Background.gd" id="5_uv61t"]
+[ext_resource type="Texture2D" uid="uid://bmgenfp806xoy" path="res://Assets/gray.png" id="6_mxj82"]
+[ext_resource type="Script" path="res://close.gd" id="7_cgsjs"]
+[ext_resource type="Script" path="res://gamma.gd" id="7_o4p14"]
+[ext_resource type="Script" path="res://search_button.gd" id="7_rrnnp"]
+[ext_resource type="Texture2D" uid="uid://ckhcydd5uplnl" path="res://Assets/x.png" id="7_t1ogy"]
+[ext_resource type="Script" path="res://delta.gd" id="8_da4w5"]
+[ext_resource type="Script" path="res://Debug.gd" id="9_0wc28"]
+[ext_resource type="Script" path="res://pi.gd" id="9_jfnj6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kooxt"]
+font_size = 165
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5j34l"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bg4f1"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="More" type="Node" parent="CanvasLayer/HBoxContainer"]
+
+[node name="More" type="Button" parent="CanvasLayer/HBoxContainer/More"]
+offset_left = 585.0
+offset_top = 1010.0
+offset_right = 665.0
+offset_bottom = 1090.0
+action_mode = 0
+shortcut_feedback = false
+flat = true
+script = ExtResource("1_nplkh")
+
+[node name="Dots" type="Sprite2D" parent="CanvasLayer/HBoxContainer/More/More"]
+position = Vector2(39.996, 7.858)
+scale = Vector2(0.16, 0.16)
+z_index = 3
+texture = ExtResource("1_w8b86")
+
+[node name="More" type="Sprite2D" parent="CanvasLayer/HBoxContainer/More/More"]
+position = Vector2(50.558, 55.715)
+scale = Vector2(0.2, 0.2)
+z_index = 3
+texture = ExtResource("3_f7mud")
+
+[node name="Less" type="Sprite2D" parent="CanvasLayer/HBoxContainer/More/More"]
+visible = false
+position = Vector2(50.558, 55.715)
+scale = Vector2(0.2, 0.2)
+z_index = 3
+texture = ExtResource("4_a438f")
+
+[node name="Dictionary" type="Button" parent="CanvasLayer/HBoxContainer/More/More"]
+visible = false
+layout_mode = 0
+offset_top = -73.0
+offset_right = 80.0
+offset_bottom = -43.0
+text = "Dictionary"
+script = ExtResource("5_gks6f")
+
+[node name="background" type="Sprite2D" parent="CanvasLayer/HBoxContainer/More/More/Dictionary"]
+visible = false
+position = Vector2(428, -396.977)
+scale = Vector2(2.16, 2.16)
+z_index = 4
+texture = ExtResource("6_mxj82")
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -198.0
+offset_top = -203.0
+offset_right = 195.0
+offset_bottom = -163.0
+placeholder_text = "Type LOWERCASE Word Here"
+
+[node name="gamma" type="Button" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -190.0
+offset_top = -154.0
+offset_right = -160.0
+offset_bottom = -124.0
+text = "γ"
+script = ExtResource("7_o4p14")
+
+[node name="delta" type="Button" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -150.0
+offset_top = -154.0
+offset_right = -120.0
+offset_bottom = -124.0
+text = "δ"
+script = ExtResource("8_da4w5")
+
+[node name="pi" type="Button" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -110.0
+offset_top = -154.0
+offset_right = -80.0
+offset_bottom = -123.0
+text = "π"
+script = ExtResource("9_jfnj6")
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -188.0
+offset_top = -65.0
+offset_right = -53.0
+offset_bottom = -35.0
+text = "Invalid"
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/background"]
+offset_left = -189.0
+offset_top = -110.0
+offset_right = -128.0
+offset_bottom = -79.0
+text = "Search"
+script = ExtResource("7_rrnnp")
+
+[node name="close" type="Button" parent="CanvasLayer/HBoxContainer/More/More/Dictionary"]
+visible = false
+layout_mode = 0
+offset_left = 848.0
+offset_top = -913.0
+offset_right = 898.0
+offset_bottom = -863.0
+script = ExtResource("7_cgsjs")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/More/More/Dictionary/close"]
+position = Vector2(25, 25)
+scale = Vector2(0.1, 0.1)
+z_index = 5
+texture = ExtResource("7_t1ogy")
+
+[node name="Low_blue" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-29.9999, 584)
+scale = Vector2(2340, 230)
+z_index = 2
+texture = ExtResource("1_koplp")
+
+[node name="Lower_Bar" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(105, 420)
+scale = Vector2(2.18632, 0.600918)
+z_index = 2
+texture = ExtResource("1_g4sw0")
+
+[node name="White_bg" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-14, 147)
+scale = Vector2(2169, 2100)
+z_index = -1
+texture = ExtResource("1_plvn1")
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(0, 20)
+scale = Vector2(0.596, 0.596)
+z_index = 1
+texture = ExtResource("1_eufop")
+script = ExtResource("5_uv61t")
+
+[node name="TileControl" type="Node" parent="CanvasLayer/HBoxContainer"]
+script = ExtResource("5_er4gm")
+
+[node name="Tile1" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = 360.0
+offset_right = -295.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile1"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile1/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile1/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile2" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 360.0
+offset_right = -205.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile2"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile2/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile2/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile3" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 360.0
+offset_right = -115.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile3"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile3/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile3/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile4" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = 360.0
+offset_right = -25.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile4"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile4/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile4/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile5" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 360.0
+offset_right = 65.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile5"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile5/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile5/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile6" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 115.0
+offset_top = 360.0
+offset_right = 155.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile6"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile6/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile6/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Tile7" type="Button" parent="CanvasLayer/HBoxContainer/TileControl"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 205.0
+offset_top = 360.0
+offset_right = 245.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("2_wq322")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile7"]
+scale = Vector2(0.165289, 0.169421)
+z_index = 3
+texture = ExtResource("3_12spa")
+offset = Vector2(121, 121)
+
+[node name="Letter" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile7/Sprite2D"]
+offset_left = 64.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 291.0
+text = "A"
+label_settings = SubResource("LabelSettings_kooxt")
+
+[node name="Score" type="Label" parent="CanvasLayer/HBoxContainer/TileControl/Tile7/Sprite2D"]
+offset_left = 160.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 118.0
+text = "1"
+label_settings = SubResource("LabelSettings_5j34l")
+
+[node name="Debug" type="Node" parent="CanvasLayer/HBoxContainer"]
+script = ExtResource("9_0wc28")
+
+[node name="Size" type="Label" parent="CanvasLayer/HBoxContainer/Debug"]
+offset_right = 383.0
+offset_bottom = 76.0
+text = "asdasd"
+label_settings = SubResource("LabelSettings_bg4f1")
+
+[node name="Offset" type="Label" parent="CanvasLayer/HBoxContainer/Debug"]
+offset_top = 55.0
+offset_right = 383.0
+offset_bottom = 131.0
+text = "asdasd"
+label_settings = SubResource("LabelSettings_bg4f1")
