@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwyv8crwegjg7"]
+[gd_scene load_steps=29 format=3 uid="uid://bwyv8crwegjg7"]
 
 [ext_resource type="Texture2D" uid="uid://d3y42nbbsy6ap" path="res://Assets/IMG_0080.jpg" id="1_eufop"]
 [ext_resource type="Texture2D" uid="uid://b6yahn0eivcew" path="res://Assets/blue_bar.png" id="1_g4sw0"]
@@ -21,6 +21,10 @@
 [ext_resource type="Script" path="res://delta.gd" id="8_da4w5"]
 [ext_resource type="Script" path="res://Debug.gd" id="9_0wc28"]
 [ext_resource type="Script" path="res://pi.gd" id="9_jfnj6"]
+[ext_resource type="AudioStream" uid="uid://2ryymoqquqw2" path="res://Assets/sound/out.ogg" id="21_j4uk3"]
+[ext_resource type="Texture2D" uid="uid://dmrs5q535f1fr" path="res://Assets/unactive_playbutton.png" id="22_otyir"]
+[ext_resource type="Texture2D" uid="uid://bugrtl80ad5w" path="res://Assets/active_playbutton.png" id="22_r74t7"]
+[ext_resource type="AudioStream" uid="uid://bm1kt7cxni2by" path="res://Assets/sound/in.ogg" id="22_tpieh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kooxt"]
 font_size = 165
@@ -201,6 +205,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile1"]
 scale = Vector2(0.165289, 0.169421)
@@ -239,6 +244,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile2"]
 scale = Vector2(0.165289, 0.169421)
@@ -277,6 +283,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile3"]
 scale = Vector2(0.165289, 0.169421)
@@ -315,6 +322,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile4"]
 scale = Vector2(0.165289, 0.169421)
@@ -353,6 +361,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile5"]
 scale = Vector2(0.165289, 0.169421)
@@ -391,6 +400,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile6"]
 scale = Vector2(0.165289, 0.169421)
@@ -429,6 +439,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 flat = true
 script = ExtResource("2_wq322")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/TileControl/Tile7"]
 scale = Vector2(0.165289, 0.169421)
@@ -452,6 +463,12 @@ offset_bottom = 118.0
 text = "1"
 label_settings = SubResource("LabelSettings_5j34l")
 
+[node name="Out_sound" type="AudioStreamPlayer" parent="CanvasLayer/HBoxContainer/TileControl"]
+stream = ExtResource("21_j4uk3")
+
+[node name="In_sound" type="AudioStreamPlayer" parent="CanvasLayer/HBoxContainer/TileControl"]
+stream = ExtResource("22_tpieh")
+
 [node name="Debug" type="Node" parent="CanvasLayer/HBoxContainer"]
 script = ExtResource("9_0wc28")
 
@@ -467,3 +484,25 @@ offset_right = 383.0
 offset_bottom = 131.0
 text = "asdasd"
 label_settings = SubResource("LabelSettings_bg4f1")
+
+[node name="play_button" type="Node" parent="CanvasLayer/HBoxContainer"]
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/play_button"]
+offset_left = 840.0
+offset_top = 1009.0
+offset_right = 1040.0
+offset_bottom = 1070.0
+metadata/_edit_use_anchors_ = true
+
+[node name="active" type="Sprite2D" parent="CanvasLayer/HBoxContainer/play_button/Button"]
+visible = false
+position = Vector2(96.035, 31.817)
+scale = Vector2(0.516667, 0.516667)
+z_index = 2
+texture = ExtResource("22_r74t7")
+
+[node name="inactive" type="Sprite2D" parent="CanvasLayer/HBoxContainer/play_button/Button"]
+position = Vector2(96.035, 43.5)
+scale = Vector2(0.516667, 0.516667)
+z_index = 2
+texture = ExtResource("22_otyir")
