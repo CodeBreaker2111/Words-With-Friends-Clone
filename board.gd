@@ -81,9 +81,10 @@ func check_playable(points: Array) -> bool:
 	
 	for i in range(1, ordered_axis.size()):
 		if i != 1:
-			var current_value = ordered_axis[i]
-			var previous_value = ordered_axis[i - 1]
-			if current_value - 1 != previous_value:
+			if ordered_axis[i] - 1 != ordered_axis[i - 1]:
+				return false
+		else:
+			if ordered_axis[0] + 1 != ordered_axis[1]:
 				return false
 	
 	return true

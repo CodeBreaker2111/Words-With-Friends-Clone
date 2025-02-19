@@ -33,6 +33,13 @@ func _on_button_down():
 		on_board = false
 	
 	Board.tiles_in_use.erase(board_pos)
+	if Board.check_playable(Board.tiles_in_use):
+		$"../../play_button/Button/active".show()
+		$"../../play_button/Button/inactive".hide()
+	else:
+		$"../../play_button/Button/active".hide()
+		$"../../play_button/Button/inactive".show()
+	
 	self.release_focus()
 
 func _on_button_up():
