@@ -11,6 +11,7 @@ var grid_offset_x = -325
 var grid_offset_y = -329
 var tiles_in_use = Array()
 var board = Array()
+var first_move = true
 
 func get_closest_grid_pos(mouse_pos: Vector2) -> Vector2:
 	var closest_point = Vector2.ZERO
@@ -49,7 +50,23 @@ func get_closest_grid_point(mouse_pos: Vector2) -> Vector2:
 	return closest_indices
 
 func check_playable(points: Array) -> bool:
-	# Section 1 of function: detects straight line
+	
+	# Section 1 of function: detect if it is first move
+	
+	if points.size() <= 1:
+		return false
+	
+	var on_star = false
+	
+	for point in points:
+		if point == Vector2(7, 7): # On middle tile
+			on_star = true
+	
+	if !on_star:
+		return false
+		
+	# Section 2 of function: detects straight line
+	
 	if points.size() == 0:
 		return false
 	
@@ -66,7 +83,10 @@ func check_playable(points: Array) -> bool:
 	
 	if !same_x and !same_y:
 		return false
-	# Section 2 of function: detect gaps
+	
+	# Section 3 of function: detect gaps
+	# For Future: Make the code for single tile plays
+	
 	var ordered_axis = Array() # Just the x or y axis of the tiles ordered by number
 	
 	if same_x:
@@ -76,6 +96,17 @@ func check_playable(points: Array) -> bool:
 	elif same_y:
 		for point in points:
 			ordered_axis.append(point.x)
+	
+	# Section 3.5 of function: Combine played tiles and words to detect gaps that have already been played
+	
+	if same_x:
+		for tile in Board.board:
+			if tile[1].x == points[0].x: # 'tile[1].x' because format of board: [["tile_letter" Vector2(tile_position)]]
+				ordered_axis.append(tile[1].x)
+	elif same_y:
+		for tile in Board.board:
+			if tile[1].y == points[0].y: # 'tile[1].x' because format of board: [["tile_letter" Vector2(tile_position)]]
+				ordered_axis.append(tile[1].y)
 	
 	ordered_axis.sort()
 	
@@ -87,4 +118,5 @@ func check_playable(points: Array) -> bool:
 			if ordered_axis[0] + 1 != ordered_axis[1]:
 				return false
 	
+	# Section 4 of function: Fact check words
 	return true
