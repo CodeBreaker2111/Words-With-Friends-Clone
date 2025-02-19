@@ -11,6 +11,3 @@ func _ready():
 	$Tile6.changetile("Γ")
 	$Tile7.changetile("Δ")
 	print(str($Tile1.global_position))
-
-func _process(delta):
-	print(str(Board.check_playable(Board.tiles_in_use)) + str(Board.tiles_in_use))

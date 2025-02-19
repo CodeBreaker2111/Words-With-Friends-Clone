@@ -47,6 +47,13 @@ func _on_button_up():
 		else:
 			board_pos = Vector2(-1, -1)
 	
+	if Board.check_playable(Board.tiles_in_use):
+		$"../../play_button/Button/active".show()
+		$"../../play_button/Button/inactive".hide()
+	else:
+		$"../../play_button/Button/active".hide()
+		$"../../play_button/Button/inactive".show()
+	
 	self.release_focus()
 
 func _process(delta):
