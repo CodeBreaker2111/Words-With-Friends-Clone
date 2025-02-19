@@ -10,6 +10,7 @@ var tile_offset_y = 48
 var grid_offset_x = -325
 var grid_offset_y = -329
 var tiles_in_use = Array()
+var board = Array()
 
 func get_closest_grid_pos(mouse_pos: Vector2) -> Vector2:
 	var closest_point = Vector2.ZERO
@@ -47,68 +48,37 @@ func get_closest_grid_point(mouse_pos: Vector2) -> Vector2:
 	
 	return closest_indices
 
-# Returns true if the array "points" (an Array of Vector2) forms a contiguous straight line.
-func points_in_line(points: Array) -> bool:
-	# If there are 0 or 1 points, we consider that a (trivial) line.
-	if points.size() <= 1:
-		return true
+func check_playable(points: Array) -> bool:
+	# Section 1 of function: detects straight line
+	if points.size() == 0:
+		return false
+	
+	var same_x = true
+	var same_y = true
+	var base_x = points[0].x
+	var base_y = points[0].y
 
-	# Determine the base direction.
-	var base = points[0]
-	var diff = points[1] - base
-
-	# Normalize diff to get the unit step in each direction.
-	# (For example, if diff is (3,0) we want the step to be (1,0); if diff is (-2, -2) we want (-1,-1))
-	var step = Vector2.ZERO
-	if diff.x != 0:
-		step.x = sign(diff.x)
-	if diff.y != 0:
-		step.y = sign(diff.y)
+	for point in points:
+		if point.x != base_x:
+			same_x = false
+		if point.y != base_y:
+			same_y = false
 	
-	# Check that all points are collinear with the base.
-	# For grid-based points, a quick test is to see if the vector from the base to each point 
-	# is a multiple of our step vector.
-	for i in range(1, points.size()):
-		var delta = points[i] - base
-		# For each coordinate where step is nonzero, delta must be an integer multiple of step.
-		if step.x != 0:
-			if int(delta.x) % int(step.x) != 0:
-				return false
-		if step.y != 0:
-			if int(delta.y) % int(step.y) != 0:
-				return false
-		# Also, the ratio for x and y (if both nonzero) must be the same.
-		if step.x != 0 and step.y != 0:
-			var factor_x = delta.x / step.x
-			var factor_y = delta.y / step.y
-			if factor_x != factor_y:
-				return false
-	# At this point, we know the points lie along the same infinite line.
+	if !same_x and !same_y:
+		return false
+	# Section 2 of function: detect gaps
+	var ordered_axis = Array() # Just the x or y axis of the tiles ordered by number
 	
-	# Now check that the points are contiguous (with no gaps).
-	# To do so, sort the points along the direction of the line.
-	# For horizontal lines or diagonals we can sort by x; for vertical lines, sort by y.
-	var sorted_points = points.duplicate()
-	if step.x != 0:
-		sorted_points.sort_custom(Callable(self, "_compare_by_x_then_y"))
-	else:
-		sorted_points.sort_custom(Callable(self, "_compare_by_y_then_x"))
+	if same_x:
+		for point in points:
+			ordered_axis.append(point.y)
 	
-	# Now check that each adjacent pair is exactly one step apart.
-	for i in range(sorted_points.size() - 1):
-		var expected = sorted_points[i] + step
-		if sorted_points[i+1] != expected:
-			return false
+	elif same_y:
+		for point in points:
+			ordered_axis.append(point.x)
+	
+	ordered_axis.sort()
+	
+	print(str(ordered_axis))
+	
 	return true
-
-# Helper for sorting by x then y (suitable for non-vertical lines)
-func _compare_by_x_then_y(a, b):
-	if a.x == b.x:
-		return int(a.y - b.y)
-	return int(a.x - b.x)
-
-# Helper for sorting by y then x (suitable for vertical lines)
-func _compare_by_y_then_x(a, b):
-	if a.y == b.y:
-		return int(a.x - b.x)
-	return int(a.y - b.y)
